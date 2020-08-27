@@ -165,6 +165,14 @@ class InitiativeSaveKVMEntry
       $wpInitiative->set_description('');
     }
 
+    $posttags = get_the_tags($initiative_post->ID );
+    if (!empty($posttags)) 
+    {
+       foreach($posttags as $tag) 
+       {
+         $wpInitiative->add_tag(new WPTag($tag->name, 
+                                          $tag->slug));
+       }
+    }
   }
-
 }

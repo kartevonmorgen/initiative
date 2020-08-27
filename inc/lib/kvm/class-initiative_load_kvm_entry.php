@@ -163,6 +163,14 @@ class InitiativeLoadKVMEntry
         '<!-- /wp:paragraph -->';
     }
     wp_update_post( $ipost );
+
+    $wpTagsStr = array();
+    foreach($wpInitiative->get_tags() as $wpTag)
+    {
+      array_push( $wpTagsStr, $wpTag->get_slug());
+    }
+
+    wp_add_post_tags($initiative_post->ID, $wpTagsStr);
   }
 
 }
