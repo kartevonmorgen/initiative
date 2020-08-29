@@ -14,6 +14,7 @@ class InUserProfileView extends UIView
     $this->add_va(new UIVATextfield('initiative_lng'));
     $this->add_va(new UIVATextfield('initiative_kvm_id'));
     $this->add_va(new UIVACheckbox('initiative_kvm_upload'));
+    $this->add_va(new UIVATextarea('initiative_kvm_errorlog'));
 
     $this->add_va(new UIVATextfield('initiative_feed_url'));
     $this->add_va(new UIVACombobox('initiative_feed_type'));

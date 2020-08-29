@@ -60,6 +60,11 @@ class InUserModel extends UIModel
     $ma->set_title('Hochladen zu Karte von Morgen');
 
     $ma = $this->add_ma(
+      new UIUserMetaModelAdapter('initiative_kvm_errorlog'));
+    $ma->set_title('Karte von Morgen Fehlermeldungen');
+    $ma->set_disabled(true);
+
+    $ma = $this->add_ma(
       new UIUserMetaModelAdapter('initiative_ds'));
     $ma->set_title('Datenschutzerklärung akzeptiert');
     $ma->set_description('Sie sind mit Datenschützerklärung einverstanden');
@@ -119,6 +124,7 @@ class InUserModel extends UIModel
     $ma = $this->add_ma(
       new UIUserMetaModelAdapter('initiative_url'));
     $ma->set_title('Webseite');
+
 
   }
 

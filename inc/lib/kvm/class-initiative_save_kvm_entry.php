@@ -143,6 +143,7 @@ class InitiativeSaveKVMEntry
                                         $initiative_post)
   {
     $wpInitiative->set_id($initiative_post->ID);
+    $wpInitiative->set_user_id($initiative_post->post_author);
 
     if(!empty($initiative_post->post_title))
     {
