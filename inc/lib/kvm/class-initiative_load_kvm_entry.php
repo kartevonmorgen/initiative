@@ -164,13 +164,37 @@ class InitiativeLoadKVMEntry
     }
     wp_update_post( $ipost );
 
+    $all_wp_cats = get_categories();
     $wpTagsStr = array();
+    $wpCatsStr = array();
     foreach($wpInitiative->get_tags() as $wpTag)
     {
-      array_push( $wpTagsStr, $wpTag->get_slug());
+      $add_cat = false;
+      foreach($all_wp_cats as $wp_cat)
+      {
+        if( $wpTag->get_slug() == $wp_cat->slug )
+        {
+          $add_cat = true;
+          break;
+        }
+      }
+      
+      if($add_cat)
+      {
+        array_push( $wpCatsStr, $wpTag->get_slug());
+      }
+      else
+      {
+        array_push( $wpTagsStr, $wpTag->get_slug());
+      }
     }
 
-    wp_add_post_tags($initiative_post->ID, $wpTagsStr);
+    wp_set_post_tags($initiative_post->ID, 
+                     $wpTagsStr, 
+                     true);
+    wp_set_post_categories($initiative_post->ID, 
+                           $wpCatsStr, 
+                           true);
   }
 
 }

@@ -175,5 +175,14 @@ class InitiativeSaveKVMEntry
                                           $tag->slug));
        }
     }
+    $postcats = get_the_category($initiative_post->ID );
+    if (!empty($postcats)) 
+    {
+       foreach($postcats as $cat) 
+       {
+         $wpInitiative->add_category(
+           new WPCategory($cat->name, $cat->slug));
+       }
+    }
   }
 }
