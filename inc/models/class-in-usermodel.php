@@ -145,7 +145,6 @@ class InUserModel extends UIModel
   {
     if($this->is_user_changed())
     {
-      echo ' Save entry ' . $this->get_property(UIModel::USER_ID);
       $save_entry = new InitiativeSaveKVMEntry(
                           $this->get_property(UIModel::USER_ID));
       $save_entry->save();
@@ -164,6 +163,8 @@ class InUserModel extends UIModel
   {
     foreach($this->get_modeladapters() as $ma)
     { 
+      // TODO: Only Update for changed fields for KVM
+      // Not for feed_url
       if($ma->is_value_changed())
       {
         return true;
