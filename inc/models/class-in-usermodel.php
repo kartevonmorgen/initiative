@@ -60,8 +60,8 @@ class InUserModel extends UIModel
     $ma->set_title('Hochladen zu Karte von Morgen');
 
     $ma = $this->add_ma(
-      new UIUserMetaModelAdapter('initiative_kvm_errorlog'));
-    $ma->set_title('Karte von Morgen Fehlermeldungen');
+      new UIUserMetaModelAdapter('initiative_kvm_log'));
+    $ma->set_title('Karte von Morgen Statusmeldungen');
     $ma->set_disabled(true);
 
     $ma = $this->add_ma(
@@ -106,6 +106,11 @@ class InUserModel extends UIModel
         }
       });
     $ma->set_title('Feed URL Type');
+
+    $ma = $this->add_ma(
+      new UIUserMetaModelAdapter('initiative_feed_update_log'));
+    $ma->set_title('Feed updates Statusmeldungen');
+    $ma->set_disabled(true);
 
 
     $ma = $this->add_ma(
