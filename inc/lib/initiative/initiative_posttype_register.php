@@ -199,7 +199,7 @@ function initiative_display_callback( $post ) {
 
     $value = get_post_meta( $post->ID, 'initiative_kvm_log', true );
 
-    echo '<textarea style="width:100%" id="initiative_kvm_log" name="initiative_kvm_log">' . esc_attr( $value ) . '</textarea>';
+    echo '<textarea style="width:100%" id="initiative_kvm_log" name="initiative_kvm_log" disabled="true">' . esc_attr( $value ) . '</textarea>';
 }
 
 
