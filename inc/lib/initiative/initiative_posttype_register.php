@@ -184,7 +184,7 @@ function initiative_type($query)
  * Register meta box(es).
  */
 function initiative_meta_boxes() {
-    add_meta_box( 'initiative_kvm_log', __( 'KVM Log', 'initiative' ), 'initiative_display_callback' );
+    add_meta_box( 'initiative_kvm_log', __( 'Karte von Morgen Log', 'initiative' ), 'initiative_display_callback' );
 }
  
 /**
