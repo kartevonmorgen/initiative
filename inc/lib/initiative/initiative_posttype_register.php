@@ -38,6 +38,7 @@ $labels = array(
 		'show_in_rest'       => true,
     'taxonomies'         => array( 'category', 'post_tag' ),
 		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
+    'register_meta_box_cb' => 'initiative_meta_boxes',
     'capabilities'       => array('create_posts' => false),
     'map_meta_cap' => true
 	);
@@ -178,6 +179,30 @@ function initiative_type($query)
   $query->set('meta_query', $meta_query); 
   return $query;
 }
+
+/**
+ * Register meta box(es).
+ */
+function initiative_meta_boxes() {
+    add_meta_box( 'initiative_kvm_log', __( 'KVM Log', 'initiative' ), 'initiative_display_callback' );
+}
+ 
+/**
+ * Meta box display callback.
+ *
+ * @param WP_Post $post Current post object.
+ */
+function initiative_display_callback( $post ) {
+    // Display code/markup goes here. Don't forget to include nonces!
+    // Add a nonce field so we can check for it later.
+    wp_nonce_field( 'initiative_kvm_log_nonce', 'initiative_kvm_log_nonce' );
+
+    $value = get_post_meta( $post->ID, 'initiative_kvm_log', true );
+
+    echo '<textarea style="width:100%" id="initiative_kvm_log" name="initiative_kvm_log">' . esc_attr( $value ) . '</textarea>';
+}
+
+
 
 //add_action( 'pre_get_posts', 'textdomain_include_search' );
 //function textdomain_include_search($query) 
