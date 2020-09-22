@@ -15,20 +15,28 @@ function initiative_dashboard_widgets()
   remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
   remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
 
-  wp_add_dashboard_widget( 'wpexplorer_dashboard_widget', 
-                           'Lippe von Morgen',
-        	                 'initiative_intro_content');
+  add_meta_box( 'wpexplorer_dashboard_widget', 
+                'Lippe von Morgen',
+        	      'initiative_intro_content', 
+                'dashboard',
+                'normal');
 
-  wp_add_dashboard_widget( 'dashboard_widget1', 
-                           'Initiative/Unternehmen',
-        	                 'initiative_explain_initiative_content');
+  add_meta_box( 'dashboard_widget1', 
+                'Initiative/Unternehmen',
+                'initiative_explain_initiative_content',
+                'dashboard',
+                'side');
 
-  wp_add_dashboard_widget( 'dashboard_widget2', 
-                           'Profil',
-        	                 'initiative_explain_profil_content');
-  wp_add_dashboard_widget( 'dashboard_widget3', 
-                           'Veranstaltungen',
-        	                 'initiative_explain_events_content');
+  add_meta_box( 'dashboard_widget2', 
+                'Profil',
+        	      'initiative_explain_profil_content',
+                'dashboard',
+                'side');
+  add_meta_box( 'dashboard_widget3', 
+                'Veranstaltungen',
+        	      'initiative_explain_events_content',
+                'dashboard',
+                'side');
 }
 
 
