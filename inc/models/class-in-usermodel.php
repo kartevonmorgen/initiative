@@ -15,15 +15,15 @@ class InUserModel extends UIModel
 
     $ma = $this->add_ma(
       new UIUserMetaModelAdapter('initiative_name'));
-    $ma->set_title('Initiative name');
-    $ma->set_description('So lange der Benutzer noch nicht bestätigt ist und die Initaitive noch nicht erstellt ist, kann man hier die Name noch ändern');
+    $ma->set_title('Name der Initiative');
+    $ma->set_description('Solange der Benutzer noch nicht bestätigt ist und die Initaitive noch nicht erstellt ist, kann man hier den Namen noch ändern');
     $ma->set_validate(true);
 
     $ma = $this->add_ma(
       new UIUserMetaInitiativeModelAdapter(
                  'initiative_company'));
     $ma->set_title('Unternehmen');
-    $ma->set_description('Sind Sie ein Unternehmen');
+    $ma->set_description('Sind Sie ein Unternehmen?');
 
     $ma = $this->add_ma(
       new UIUserMetaModelAdapter('initiative_address'));
@@ -67,7 +67,7 @@ class InUserModel extends UIModel
     $ma = $this->add_ma(
       new UIUserMetaModelAdapter('initiative_ds'));
     $ma->set_title('Datenschutzerklärung akzeptiert');
-    $ma->set_description('Sie sind mit Datenschützerklärung einverstanden');
+    $ma->set_description('Sie sind mit der Datenschutzerklärung einverstanden');
     $ma->set_validate(true);
 
     $ma = $this->add_ma(

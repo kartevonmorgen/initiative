@@ -37,16 +37,16 @@ function initiative_wp_new_user_notification_email(
   $login_url  = wp_login_url();
   $link = network_site_url( 'wp-login.php?action=rp&key=' . $key . '&login=' . rawurlencode( $user->user_login)); 
   $message = '<p>Hallo ' . $user->user_login. '</p>';
-  $message .= '<p>Wilkommen auf dem ' . $blogname . ' Platform</p>';
+  $message .= '<p>Wilkommen auf der ' . $blogname . ' Plattform</p>';
 
   $message .= '<p>Benutzername: ' . $user_login . '</p>';
   $message .= '<p>Email: ' . $user_email . '</p>';
-  $message .= '<p>Die Registrierung wird manuell bestätigt durch die Redaktion von Lippe von Morgen. So Bald die Registrierung freigegeben ist werden Sie ein Rückmeldung bekommen</p>';
+  $message .= '<p>Die Registrierung wird manuell bestätigt durch die Redaktion von Lippe von Morgen. Sobald die Registrierung freigegeben ist werden Sie eine Rückmeldung bekommen</p>';
   $message .= '<p>Bitte bestätigen Sie die Registrierung jetzt schon über den folgenden Link und stellen Sie ein Passwort ein: ';
   $message .= '<a href="' . $link . '">' . $link . '</a>';
  
-  $message .= '<p>Wenn Sie problemen haben, kontaktieren Sie Bitte die folgende Email-Adresse: ' . get_option('admin_email') . '</p>';
-  $message .= '<p>Viel erfolg auf dem Platform!</p>';
+  $message .= '<p>Wenn Sie Probleme haben, kontaktieren Sie Bitte die folgende Email-Adresse: ' . get_option('admin_email') . '</p>';
+  $message .= '<p>Viel Erfolg auf dem Plattform!</p>';
  
 //  $wp_new_user_notification_email['subject'] = sprintf( '[%s] Your credentials.', $blogname );
   $wp_new_user_notification_email['headers'] = array('Content-Type: text/html; charset=UTF-8');
