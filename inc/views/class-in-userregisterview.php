@@ -62,7 +62,7 @@ class InUserRegisterView extends UIView
 <hr>
 <p>&nbsp;</p>
 <p>Durch die Registrierung auf dieser Plattform werden die in Gelb eingegebenen Daten veröffentlicht.<br/>Die weißen Felder werden nur für interne Zwecke verwendet.<br/>Wenn Sie sich Anmelden können Sie eine Beschreibung von ihre Initiative und Veranstaltungen eingeben. Diese Eingaben werden automatisch auf dieser Webseite und auf der Webseite <a href="https://www.kartevonmorgen.org">www.kartevonmorgen.org</a> veröffentlicht.<br/>
-Mehr Informationen über die Verarbeitung von personenbezogenen Daten sind in unserer <a href="<?php echo network_site_url('/ds/'); ?>">Datenschützerklärung</a> zu lesen</p>
+Mehr Informationen über die Verarbeitung von personenbezogenen Daten sind in unserer <a href="<?php echo network_site_url('/ds/'); ?>">Datenschutzerklärung</a> zu lesen</p>
 <p>&nbsp;</p>
 <hr>
 <p>&nbsp;</p><?php
