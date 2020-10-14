@@ -53,11 +53,10 @@ class InUserModel extends UIModel
     $ma = $this->add_ma(
       new UIUserMetaModelAdapter('initiative_kvm_id'));
     $ma->set_title('Karte von Morgen Id');
-//    $ma->set_disabled(true);
-
-    $ma = $this->add_ma(
-      new UIUserMetaModelAdapter('initiative_kvm_upload'));
-    $ma->set_title('Hochladen zu Karte von Morgen');
+    if( !current_user_can('administrator')) 
+    {
+      $ma->set_disabled(true);
+    }
 
     $ma = $this->add_ma(
       new UIUserMetaModelAdapter('initiative_kvm_log'));

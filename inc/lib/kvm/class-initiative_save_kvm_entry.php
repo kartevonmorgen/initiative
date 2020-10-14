@@ -30,31 +30,45 @@ class InitiativeSaveKVMEntry
       return;
     }
 
-    if(!$user_meta->initiative_kvm_upload)
-    {
-      //echo 'No upload allowed for user_id:' . $user_id;
-      return;
-    }
+  //  if(!$user_meta->initiative_kvm_upload)
+  //  {
+  //    //echo 'No upload allowed for user_id:' . $user_id;
+  //    return;
+  //  }
 
 
     $wpInitiative = new WPInitiative();
     $this->fill_initiative_user($wpInitiative, $user_meta);
 
-    if( $user_meta->initiative_id > 0 )
+    if( empty ($user_meta->initiative_id) )
     {
-      $initiative_post = get_post($user_meta->initiative_id);
-      if(!empty($initiative_post))
-      {
-        $this->fill_initiative_post($wpInitiative, 
-                                    $initiative_post);
-      }
-
+      return;
     }
+    
+    $initiative_post = get_post($user_meta->initiative_id);
+    if(empty($initiative_post))
+    {
+      return;
+    }
+
+    if(empty($initiative_post->post_status))
+    {
+      return;
+    }
+
+    if( $initiative_post->post_status !== 'publish')
+    {
+      // Only update if the post is published
+      return;
+    }
+
+    $this->fill_initiative_post($wpInitiative, 
+                                $initiative_post);
+
     $instance = KVMInterface::get_instance();
     $kvm_id = $instance->save_entry($wpInitiative);
 
     update_user_meta($user_id, 'initiative_kvm_id', $kvm_id);
-
   }
 
   private function fill_initiative_user($wpInitiative, 
@@ -144,6 +158,7 @@ class InitiativeSaveKVMEntry
   {
     $wpInitiative->set_id($initiative_post->ID);
     $wpInitiative->set_user_id($initiative_post->post_author);
+    $wpInitiative->set_status($initiative_post->post_status);
 
     if(!empty($initiative_post->post_title))
     {
