@@ -56,7 +56,6 @@ function initiative_explain_initiative_content()
 function initiative_explain_profil_content() 
 {
   echo '<p>Unter <a href="'. get_site_url() . '/wp-admin/profile.php">Profil</a> kannst du die Kontaktdaten für deine Initiative oder Unternehmen ändern.</p>';
-  echo '<p>Auch kannst du einstellen ob deine veröffentlichte Initiative oder Unternehmen auch auf der Wandelkarte erscheinen soll. Falls ja dann setze ein Häkchen bei <em>Hochladen zu Karte von Morgen</em></p>';
   echo '<p>Auch ist es möglich Veranstaltungen von seiner eigenen Webseite automatisch zu importieren. Dafür sind die Felder <em>Feed URL</em> und <em>Feed URL Type</em>. Wenn du das möchtest dann nimmt bitte kontakt auf mit support@lippevonmorgen.de.</p>';
   echo '<p>Für mehr Hilfe, schau einfach <a href="' .get_site_url() . '/hilfe#hilfe-profil">hier</a>';
 }
@@ -64,7 +63,7 @@ function initiative_explain_profil_content()
 function initiative_explain_events_content() 
 {
   echo '<p>Unter <a href="'. get_site_url() . '/wp-admin/edit.php?post_type=event">Veranstaltungen</a> findest du die Seite wo man Veranstaltungen erstellen oder bearbeiten kann.</p>';
-  echo '<p>Nachdem du Veranstaltungen bearbeitetet hast, kannst du diese <em>Veröffentlichen</em>. Dann ist diese Veranstaltung sichtbar im <a href="' . get_site_url() . '/eventscalendar">Wandelkalendar</a> und wird auf der <a href="' .get_site_url() . '/wandelkarte">Wandelkarte</a> angezeigt.</p><p><b>Pass auf:</b> Die Veranstaltung wird nur auf der Wandelkarte angezeigt wenn das Hochladen zu der Karte von Morgen aktiviert ist. Das kann man im Profil einstellen.';
+  echo '<p>Nachdem du Veranstaltungen bearbeitetet hast, kannst du diese <em>Veröffentlichen</em>. Dann ist diese Veranstaltung sichtbar im <a href="' . get_site_url() . '/eventscalendar">Wandelkalendar</a> und wird auf der <a href="' .get_site_url() . '/wandelkarte">Wandelkarte</a> angezeigt.</p>';
   echo '<p>Für mehr Hilfe, schau einfach <a href="' .get_site_url() . '/hilfe#hilfe-events">hier</a>';
 }
 
