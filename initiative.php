@@ -23,7 +23,6 @@ include('inc/lib/user/initiative_userregister.php');
 include('inc/lib/user/initiative_usertable_actions.php');
 include('inc/lib/user/initiative_usertable_columns.php');
 include('inc/lib/dashboard/initiative_dashboard.php');
-include('inc/lib/media/media_upload.php');
 include('inc/lib/translate/initiative_changependingstate.php');
 include('inc/lib/initiative/initiative_posttype_register.php');
 
