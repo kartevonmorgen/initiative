@@ -7,7 +7,6 @@ function initiative_modify_user_table( $column )
   unset($column['posts']);
   $column['initiative'] = 'Initiative';
   $column['approved'] = 'Bestätigt';
-  $column['kvm_upload'] = 'KVM Upload';
   return $column;
 }
 
@@ -42,37 +41,24 @@ function initiative_modify_user_table_row( $val, $column_name, $user_id )
     }
   }
 
-  if ('kvm_upload' == $column_name) 
-  {
-    $user_meta = get_userdata($user_id);
-    $kvm_upload = $user_meta->initiative_kvm_upload;
-    if ( $kvm_upload ) 
-    {
-      return 'JA';
-    }
-    else
-    {
-      return '<b>NEIN</b>';
-    }
-  }
   return $val;
 }
 
 //
 // make the KVM-Upload column sortable
 //
-add_filter( 'manage_users_sortable_columns', 
-            'initiative_user_sortable_columns' );
+//add_filter( 'manage_users_sortable_columns', 
+//            'initiative_user_sortable_columns' );
 function initiative_user_sortable_columns( $columns ) 
 {
-  $columns['kvm_upload'] = 'kvm_upload';
+  $columns['approved'] = 'approved';
   return $columns;
 }
  
 //set instructions on how to sort the kvm_upload column
 if( is_admin()) 
 {
-   add_action('pre_user_query', 'initiative_user_query');
+   //add_action('pre_user_query', 'initiative_user_query');
 }
 
 function initiative_user_query($userquery)
