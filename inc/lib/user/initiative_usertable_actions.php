@@ -76,46 +76,58 @@ function initiative_user_approve_functions()
   echo ' ist bestätigt</br>';
   if( $user_meta->initiative_id > 0 )
   {
-    echo 'Initiative ist bereits erstellt ' . $user_meta->initiative_name . ' (id=' .$user_meta->initiative_id;
-    echo '</br>';
-  }
-  else
-  {
-
-    echo 'Initiative erstellen ' . $user_meta->initiative_name;
-    echo '</br>';
-  
-    $ipost = array(
-      'comment_status' => 'closed',
-      'post_author' => $user_id,
-      'post_category' => array(1),
-      'post_content' => '<!-- wp:paragraph -->'.
-                        '<p>Schreibe hier etwas über deine Initiative</p>'.
-                        '<!-- /wp:paragraph -->',
-      'post_title' => $user_meta->initiative_name,
-      'post_status' => 'draft',
-      'post_type' => 'initiative');
-
-      // Insert the post into the database
-    $ipostid = wp_insert_post( $ipost, true );
-    update_user_meta($user_id, 'initiative_id', $ipostid);
-
-    echo 'Webseite: ' . $user_meta->user_url;
-    echo '</br>';
-
-    if(empty($user_meta->user_url))
+    $ipost = get_post($user_meta->initiative_id);
+    if(!empty($ipost))
     {
-      $website = get_bloginfo('url') .
-        '?post_type=initiative&p=' . $ipostid;
-      echo 'Update Webseite: ' . $website;
-      echo '</br>';
-      $args = array(
-        'ID' => $user_id,
-        'user_url' => $website);
-      wp_update_user( $args );
+      if(get_post_status($ipost) !== 'trash')
+      {
+        echo 'Initiative ist bereits erstellt ' . 
+          $user_meta->initiative_name . 
+          ' (id=' .$user_meta->initiative_id;
+        echo '</br>';
+        return;
+      }
     }
   }
+
+  echo 'Initiative erstellen ' . $user_meta->initiative_name;
+  echo '</br>';
+  
+  $post_name = sanitize_title( $user_meta->initiative_name     );
+  $ipost = array(
+    'comment_status' => 'closed',
+    'post_author' => $user_id,
+    'post_category' => array(1),
+    'post_content' => '<!-- wp:paragraph -->'.
+                        '<p>Schreibe hier etwas über deine Initiative</p>'.
+                        '<!-- /wp:paragraph -->',
+    'post_title' => $user_meta->initiative_name,
+    'post_name' => $post_name,
+    'post_status' => 'draft',
+    'post_type' => 'initiative');
+
+  // Insert the post into the database
+  $ipostid = wp_insert_post( $ipost, true );
+  update_user_meta($user_id, 'initiative_id', $ipostid);
+
+  echo 'Webseite: ' . $user_meta->user_url;
+  echo '</br>';
+
+  if(!empty($user_meta->user_url))
+  {
+    return;
+  }
+
+
+  $website = home_url('initiative/' . $post_name); 
+  echo 'UUpdate Webseite: ' . $website;
+  echo '</br>';
+  $args = array(
+    'ID' => $user_id,
+    'user_url' => $website);
+  wp_update_user( $args );
 }
+
 
 // 
 // Update User feed
