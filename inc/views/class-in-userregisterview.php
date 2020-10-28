@@ -68,7 +68,7 @@ Mehr Informationen über die Verarbeitung von personenbezogenen Daten sind in un
 <p><b>Anleitung</b></p>
 <hr>
 <p>&nbsp;</p>
-<p><em>Eine <a href="https://test.lippevonmorgen.de/hilfe/" data-type="page" data-id="351">ausgebreitete Anleitung</a> über wie man sich registrieren kann </em><br><em>und wie man seine Initiative und Veranstaltungen </em><br><em>eintragen kann findet man <a href="https://test.lippevonmorgen.de/hilfe/" data-type="page" data-id="351">hier</a>.</em></p>
+<p><em>Eine <a href="<?php echo network_site_url('/hilfe/') ?>" data-type="page" data-id="351">ausgebreitete Anleitung</a> über wie man sich registrieren kann </em><br><em>und wie man seine Initiative und Veranstaltungen </em><br><em>eintragen kann findet man <a href="<?php echo network_site_url('/hilfe/') ?>" data-type="page" data-id="351">hier</a>.</em></p>
 <p>&nbsp;</p>
 <hr>
 <p>&nbsp;</p>
