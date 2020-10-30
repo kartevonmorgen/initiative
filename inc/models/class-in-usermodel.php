@@ -70,49 +70,6 @@ class InUserModel extends UIModel
     $ma->set_validate(true);
 
     $ma = $this->add_ma(
-      new UIUserMetaModelAdapter('initiative_feed_url'));
-    $ma->set_title('Feed URL');
-    $ma->set_description('Diese wird benutzt um Veranstaltungen automatisch hochzuladen');
-
-    $ma = $this->add_ma(
-      new class('initiative_feed_type') 
-          extends UIUserMetaModelAdapter
-      {
-        private $_feedchoices;
-
-        public function get_choices()
-        {
-          if(!empty($this->_feedchoices))
-          {
-            return $this->_feedchoices;
-          }
-
-          if (!class_exists('SSImporterFactory')) 
-          { 
-            return array();
-          }
-          
-          $this->_feedchoices = array();
-          $factory = SSImporterFactory::get_instance();
-          foreach($factory->get_importtypes() 
-                  as $importtype)
-          {
-            array_push($this->_feedchoices, 
-              new UIChoice($importtype->get_id(), 
-                           $importtype->get_name()));
-          }
-          return $this->_feedchoices;
-        }
-      });
-    $ma->set_title('Feed URL Type');
-
-    $ma = $this->add_ma(
-      new UIUserMetaModelAdapter('initiative_feed_update_log'));
-    $ma->set_title('Feed updates Statusmeldungen');
-    $ma->set_disabled(true);
-
-
-    $ma = $this->add_ma(
       new UIUserMetaModelAdapter('first_name'));
     $ma->set_title('Kontaktperson Vorname ');
 
