@@ -15,9 +15,6 @@ function initiative_user_action_links( $actions, $user )
   }
   else
   {
-    $update_link = admin_url( "users.php?page=user_updatefeed&amp;action=user_updatefeed&amp;user=$user->ID");
-    $actions['user_updatefeed'] = "<a href='$update_link'><b>" . __( 'Add/Update Feed','initiative') . "</b></a>";
-    
     $update_link = admin_url( "users.php?page=user_updatekvm&amp;action=user_updatekvm&amp;user=$user->ID");
     $actions['user_updatekvm'] = "<a href='$update_link'><b>" . __( 'Add/Update KVM','initiative') . "</b></a>";
 
@@ -34,10 +31,6 @@ function initiative_admin_submenu_userapprove()
   add_users_page('Benutzer bestätigen', 'Benutzer bestätigen', 
     'manage_options', 'user_approve' , 
     'initiative_user_approve_functions');
-  
-  add_users_page('Benutzer Update Feed', 'Benutzer Update Feed', 
-    'manage_options', 'user_updatefeed' , 
-    'initiative_user_updatefeed_functions');
   
   add_users_page('Benutzer Update KVM', 'Benutzer Update KVM', 
     'manage_options', 'user_updatekvm' , 
@@ -126,69 +119,6 @@ function initiative_user_approve_functions()
     'ID' => $user_id,
     'user_url' => $website);
   wp_update_user( $args );
-}
-
-
-// 
-// Update User feed
-//
-function initiative_user_updatefeed_functions() 
-{
-  if(!isset($_GET['action']) && $_GET['action']== 'user_updatefeed')
-  {
-    return;
-  }
-
-  $user_id = $_GET['user'];
-  $user_meta = get_userdata($user_id);
-
-  $feedurl = $user_meta->initiative_feed_url;
-  $feedtype = $user_meta->initiative_feed_type;
-  if( empty($feedurl))
-  {
-    echo 'feed_url not defined, so no automatic events upload ';
-    return;
-  }
-
-  if( empty($feedtype))
-  {
-    echo 'feed_type not defined, so no automatic events upload ';
-    return;
-  }
-  
-  if (!class_exists('SSImporterFactory')) 
-  { 
-    echo 'Plugin Events Syndication Server not found';
-    return;
-  }
-
-  echo 'Add Feed for url: '. $feedurl . 
-    ' type: ' . $feedtype .
-    ' user_id = ' . $user_id;
-  echo '</br>';
-
-  $instance = SSImporterFactory::get_instance();
-  $importer = $instance->create_importer($feedtype, $feedurl);
-  if(empty($importer))
-  {
-    echo 'No Importer found for feed url' . $feedurl . 
-      ' type ' . $feedtype;
-    return;
-  }
-
-  $importer->set_owner_user_id($user_id);
-  $importer->set_feed_update_daily(true);
-  $importer->import();
-
-  if($importer->has_error())
-  {
-    echo 'ERROR:' . $importer->get_error();
-  }
-  else
-  {
-    echo 'Import done succesfully';
-  }
-  echo '</br>';
 }
 
 function initiative_user_updatekvm_functions() 
