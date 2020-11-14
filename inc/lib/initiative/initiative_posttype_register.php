@@ -2,8 +2,7 @@
 // 
 // Register out own custom post type for Initiative.
 //
-add_action( 'init', 'reg_posttype' );
-function reg_posttype() {
+function initiative_reg_posttype() {
 
 $labels = array(
 		'name' => _x( 'Initiativen', 'post type general name', 'initiative' ),
