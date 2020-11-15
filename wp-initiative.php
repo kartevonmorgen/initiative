@@ -28,6 +28,7 @@ class WPInitiativePluginLoader extends WPPluginLoader
   public function init()
   {
     $this->add_dependency('wp-libraries/wp-libraries.php');
+
     $this->add_include('inc/lib/kvm/initiative2kvm.php');
     $this->add_include('inc/lib/kvm/class-initiative_load_kvm_entry.php');
     $this->add_include('inc/lib/kvm/class-initiative_save_kvm_entry.php');
