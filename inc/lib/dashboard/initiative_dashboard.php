@@ -31,10 +31,15 @@ function initiative_dashboard_widgets()
                 'Profil',
         	      'initiative_explain_profil_content',
                 'dashboard',
-                'side');
+                'normal');
   add_meta_box( 'dashboard_widget3', 
                 'Veranstaltungen',
         	      'initiative_explain_events_content',
+                'dashboard',
+                'side');
+  add_meta_box( 'dashboard_widget4', 
+                'Importierte Veranstaltung Feeds',
+        	      'initiative_explain_eventfeeds_content',
                 'dashboard',
                 'side');
 }
@@ -56,7 +61,6 @@ function initiative_explain_initiative_content()
 function initiative_explain_profil_content() 
 {
   echo '<p>Unter <a href="'. get_site_url() . '/wp-admin/profile.php">Profil</a> kannst du die Kontaktdaten für deine Initiative oder Unternehmen ändern.</p>';
-  echo '<p>Auch ist es möglich Veranstaltungen von seiner eigenen Webseite automatisch zu importieren. Dafür sind die Felder <em>Feed URL</em> und <em>Feed URL Type</em>. Wenn du das möchtest dann nimmt bitte kontakt auf mit support@lippevonmorgen.de.</p>';
   echo '<p>Für mehr Hilfe, schau einfach in <a href="' .get_site_url() . '/hilfe#hilfe-profil">die Anleitung</a> auf dem Plattform';
 }
 
@@ -67,3 +71,7 @@ function initiative_explain_events_content()
   echo '<p>Für mehr Hilfe, schau einfach in <a href="' .get_site_url() . '/hilfe#hilfe-events">die Anleitung</a> auf dem Plattform';
 }
 
+function initiative_explain_eventfeeds_content() 
+{
+  echo '<p>Auch ist es möglich Veranstaltungen von seiner eigenen Webseite automatisch zu importieren. Unten <a href="'. get_site_url() . '/wp-admin/edit.php?post_type=ssfeed">Veranstaltung Feeds</a> findest du deine importierte Feeds. Wenn du das möchtest dann nimmt bitte kontakt auf mit support@lippevonmorgen.de.</p>';
+}

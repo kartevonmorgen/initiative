@@ -78,7 +78,7 @@ class WPInitiativePluginLoader extends WPPluginLoader
   /**
    * Change the excerpt more string
    */
-  function initiative_excerpt_more( $more ) 
+  function excerpt_more( $more ) 
   {
     return ' [..]';
   }
