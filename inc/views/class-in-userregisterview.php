@@ -61,14 +61,14 @@ class InUserRegisterView extends UIView
 <p><b>Datenschutz</b></p>
 <hr>
 <p>&nbsp;</p>
-<p>Durch die Registrierung auf dieser Plattform werden die in Gelb eingegebenen Daten veröffentlicht.<br/>Die weißen Felder werden nur für interne Zwecke verwendet.<br/>Wenn Sie sich Anmelden können Sie eine Beschreibung von ihre Initiative und Veranstaltungen eingeben. Diese Eingaben werden automatisch auf dieser Webseite und auf der Webseite <a href="https://www.kartevonmorgen.org">www.kartevonmorgen.org</a> veröffentlicht.<br/>
+<p>Durch die Registrierung auf dieser Plattform werden die in Gelb eingegebenen Daten veröffentlicht.<br/>Die weißen Felder werden nur für interne Zwecke verwendet.<br/>Wenn Sie sich Anmelden können Sie eine Beschreibung von Ihrer Initiative und Ihren Veranstaltungen eingeben. Diese Eingaben werden automatisch auf dieser Webseite und auf der Webseite <a href="https://www.kartevonmorgen.org">www.kartevonmorgen.org</a> veröffentlicht.<br/>
 Mehr Informationen über die Verarbeitung von personenbezogenen Daten sind in unserer <a href="<?php echo network_site_url('/ds/'); ?>">Datenschutzerklärung</a> zu lesen</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p><b>Anleitung</b></p>
 <hr>
 <p>&nbsp;</p>
-<p><em>Eine <a href="<?php echo network_site_url('/hilfe/') ?>" data-type="page" data-id="351">ausgebreitete Anleitung</a> über wie man sich registrieren kann </em><br><em>und wie man seine Initiative und Veranstaltungen </em><br><em>eintragen kann findet man <a href="<?php echo network_site_url('/hilfe/') ?>" data-type="page" data-id="351">hier</a>.</em></p>
+<p><em>Eine <a href="<?php echo network_site_url('/hilfe/') ?>" data-type="page" data-id="351">ausgebreitete Anleitung</a> wie man sich registrieren </em><br><em>und wie man seine Initiative und Veranstaltungen </em><br><em>eintragen kann, findet man <a href="<?php echo network_site_url('/hilfe/') ?>" data-type="page" data-id="351">hier</a>.</em></p>
 <p>&nbsp;</p>
 <hr>
 <p>&nbsp;</p>

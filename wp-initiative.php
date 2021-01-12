@@ -38,6 +38,7 @@ class WPInitiativePluginLoader extends WPPluginLoader
     $this->add_include('inc/lib/dashboard/initiative_dashboard.php');
     $this->add_include('inc/lib/translate/initiative_changependingstate.php');
     $this->add_include('inc/lib/initiative/initiative_posttype_register.php');
+    //$this->add_include('inc/lib/initiative/class-widget-initiative-search.php');
 
     $this->add_include('inc/views/class-in-userprofileview.php');
     $this->add_include('inc/views/class-in-userregisterview.php');
@@ -63,6 +64,8 @@ class WPInitiativePluginLoader extends WPPluginLoader
     // so we call this directly.
     initiative_reg_posttype();
     $this->add_starter ( new InControlHolder());
+    //add_action( 'widgets_init', 
+    //            array($this, 'register_widget_initiative_search' ));
   }
 
   public function remove_menus()
@@ -82,6 +85,7 @@ class WPInitiativePluginLoader extends WPPluginLoader
   {
     return ' [..]';
   }
+
 }
 
 $loader = new WPInitiativePluginLoader();
