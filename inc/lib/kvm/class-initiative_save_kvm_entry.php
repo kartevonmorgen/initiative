@@ -3,6 +3,7 @@
 class InitiativeSaveKVMEntry
 {
   private $_user_id;
+  private $_user_meta;
   
   public function __construct($user_id) 
   {
@@ -14,6 +15,16 @@ class InitiativeSaveKVMEntry
     return $this->_user_id;
   }
 
+  public function get_user_meta()
+  {
+    if(empty($this->_user_meta))
+    {
+      $user_id = $this->get_user_id();
+      $this->_user_meta = get_userdata($user_id);
+    }
+    return $this->_user_meta;
+  }
+
   public function save()
   {
     if (!class_exists('KVMInterface')) 
@@ -23,7 +34,7 @@ class InitiativeSaveKVMEntry
     }
 
     $user_id = $this->get_user_id();
-    $user_meta = get_userdata($user_id);
+    $user_meta = $this->get_user_meta();
     if(empty($user_meta))
     {
       //echo 'user_meta is empty for user_id:' . $user_id;
@@ -112,11 +123,12 @@ class InitiativeSaveKVMEntry
     }
 
     $wpInitiative->set_location(
-      $this->create_location($user_meta));
+      $this->create_location());
   }
 
-  private function create_location($user_meta)
+  public function create_location()
   {
+    $user_meta = $this->get_user_meta();
     $wpLocation = new WPLocation();
     if( ! empty( $user_meta->initiative_name))
     {
